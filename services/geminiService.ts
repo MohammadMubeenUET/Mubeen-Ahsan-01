@@ -1,8 +1,10 @@
-
 import { GoogleGenAI, Type, GenerateContentResponse } from "@google/genai";
 import { BowTieData, FaultTreeNode, EventTreeData, LopaScenario, QraData, Barrier, HazopNode, FmeaSystem } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Ensure process.env.API_KEY doesn't crash the app if the polyfill missed it or it's undefined
+const apiKey = (typeof process !== 'undefined' && process.env && process.env.API_KEY) || '';
+
+const ai = new GoogleGenAI({ apiKey });
 const MODEL_NAME = 'gemini-3-flash-preview';
 
 // Retry Helper

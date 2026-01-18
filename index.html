@@ -1,12 +1,21 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Safety for All - Risk Analysis Platform</title>
+    <script>
+      // Polyfill process for browser environment to prevent crash on API key access
+      window.process = {
+        env: {
+          NODE_ENV: 'development',
+          API_KEY: '' // This assumes the key is injected by the environment or will be empty
+        }
+      };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
